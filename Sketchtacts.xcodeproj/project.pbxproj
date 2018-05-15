@@ -13,6 +13,14 @@
 		0F2EB94720AB6A3D00E6F907 /* Sketchtacts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB94520AB6A3D00E6F907 /* Sketchtacts.xcdatamodeld */; };
 		0F2EB94920AB6A3E00E6F907 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F2EB94820AB6A3E00E6F907 /* Assets.xcassets */; };
 		0F2EB94C20AB6A3E00E6F907 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F2EB94A20AB6A3E00E6F907 /* LaunchScreen.storyboard */; };
+		0F2EB95420AB6F8300E6F907 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB95320AB6F8300E6F907 /* EventsViewController.swift */; };
+		0F2EB95620AB708E00E6F907 /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB95520AB708E00E6F907 /* NewEventViewController.swift */; };
+		0F2EB95B20AB73DB00E6F907 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB95720AB73DB00E6F907 /* Event+CoreDataClass.swift */; };
+		0F2EB95C20AB73DB00E6F907 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB95820AB73DB00E6F907 /* Event+CoreDataProperties.swift */; };
+		0F2EB95D20AB73DB00E6F907 /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB95920AB73DB00E6F907 /* Person+CoreDataClass.swift */; };
+		0F2EB95E20AB73DB00E6F907 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB95A20AB73DB00E6F907 /* Person+CoreDataProperties.swift */; };
+		0F2EB96020AB78C100E6F907 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB95F20AB78C100E6F907 /* ConfirmViewController.swift */; };
+		0F2EB96220AB7FA600E6F907 /* ViewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB96120AB7FA600E6F907 /* ViewEventViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +32,14 @@
 		0F2EB94820AB6A3E00E6F907 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F2EB94B20AB6A3E00E6F907 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F2EB94D20AB6A3E00E6F907 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F2EB95320AB6F8300E6F907 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		0F2EB95520AB708E00E6F907 /* NewEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
+		0F2EB95720AB73DB00E6F907 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0F2EB95820AB73DB00E6F907 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0F2EB95920AB73DB00E6F907 /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0F2EB95A20AB73DB00E6F907 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0F2EB95F20AB78C100E6F907 /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
+		0F2EB96120AB7FA600E6F907 /* ViewEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEventViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +56,10 @@
 		0F2EB93220AB6A3C00E6F907 = {
 			isa = PBXGroup;
 			children = (
+				0F2EB95720AB73DB00E6F907 /* Event+CoreDataClass.swift */,
+				0F2EB95820AB73DB00E6F907 /* Event+CoreDataProperties.swift */,
+				0F2EB95920AB73DB00E6F907 /* Person+CoreDataClass.swift */,
+				0F2EB95A20AB73DB00E6F907 /* Person+CoreDataProperties.swift */,
 				0F2EB93D20AB6A3D00E6F907 /* Sketchtacts */,
 				0F2EB93C20AB6A3D00E6F907 /* Products */,
 			);
@@ -63,6 +83,10 @@
 				0F2EB94A20AB6A3E00E6F907 /* LaunchScreen.storyboard */,
 				0F2EB94D20AB6A3E00E6F907 /* Info.plist */,
 				0F2EB94520AB6A3D00E6F907 /* Sketchtacts.xcdatamodeld */,
+				0F2EB95320AB6F8300E6F907 /* EventsViewController.swift */,
+				0F2EB95520AB708E00E6F907 /* NewEventViewController.swift */,
+				0F2EB95F20AB78C100E6F907 /* ConfirmViewController.swift */,
+				0F2EB96120AB7FA600E6F907 /* ViewEventViewController.swift */,
 			);
 			path = Sketchtacts;
 			sourceTree = "<group>";
@@ -138,8 +162,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F2EB95D20AB73DB00E6F907 /* Person+CoreDataClass.swift in Sources */,
 				0F2EB94720AB6A3D00E6F907 /* Sketchtacts.xcdatamodeld in Sources */,
+				0F2EB95E20AB73DB00E6F907 /* Person+CoreDataProperties.swift in Sources */,
+				0F2EB95420AB6F8300E6F907 /* EventsViewController.swift in Sources */,
+				0F2EB95620AB708E00E6F907 /* NewEventViewController.swift in Sources */,
+				0F2EB96220AB7FA600E6F907 /* ViewEventViewController.swift in Sources */,
+				0F2EB96020AB78C100E6F907 /* ConfirmViewController.swift in Sources */,
+				0F2EB95C20AB73DB00E6F907 /* Event+CoreDataProperties.swift in Sources */,
 				0F2EB94120AB6A3D00E6F907 /* ViewController.swift in Sources */,
+				0F2EB95B20AB73DB00E6F907 /* Event+CoreDataClass.swift in Sources */,
 				0F2EB93F20AB6A3D00E6F907 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
