@@ -11,7 +11,6 @@
 		0F2EB94120AB6A3D00E6F907 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB94020AB6A3D00E6F907 /* ViewController.swift */; };
 		0F2EB94420AB6A3D00E6F907 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F2EB94220AB6A3D00E6F907 /* Main.storyboard */; };
 		0F2EB94720AB6A3D00E6F907 /* Sketchtacts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB94520AB6A3D00E6F907 /* Sketchtacts.xcdatamodeld */; };
-		0F2EB94920AB6A3E00E6F907 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F2EB94820AB6A3E00E6F907 /* Assets.xcassets */; };
 		0F2EB94C20AB6A3E00E6F907 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F2EB94A20AB6A3E00E6F907 /* LaunchScreen.storyboard */; };
 		0F2EB95420AB6F8300E6F907 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB95320AB6F8300E6F907 /* EventsViewController.swift */; };
 		0F2EB95620AB708E00E6F907 /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB95520AB708E00E6F907 /* NewEventViewController.swift */; };
@@ -19,8 +18,12 @@
 		0F2EB95C20AB73DB00E6F907 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB95820AB73DB00E6F907 /* Event+CoreDataProperties.swift */; };
 		0F2EB95D20AB73DB00E6F907 /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB95920AB73DB00E6F907 /* Person+CoreDataClass.swift */; };
 		0F2EB95E20AB73DB00E6F907 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB95A20AB73DB00E6F907 /* Person+CoreDataProperties.swift */; };
-		0F2EB96020AB78C100E6F907 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB95F20AB78C100E6F907 /* ConfirmViewController.swift */; };
-		0F2EB96220AB7FA600E6F907 /* ViewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB96120AB7FA600E6F907 /* ViewEventViewController.swift */; };
+		A109914220AF3140007A0FF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A109914120AF3140007A0FF6 /* Assets.xcassets */; };
+		A1138E0820ADFBEE00A33481 /* EnterPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1138E0720ADFBEE00A33481 /* EnterPinViewController.swift */; };
+		A1B1EC5820ACA2610013D46A /* NewPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1EC5720ACA2610013D46A /* NewPersonViewController.swift */; };
+		A1B1EC5A20ACA4E40013D46A /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1EC5920ACA4E40013D46A /* ConfirmViewController.swift */; };
+		A1B1EC5C20ACC2CA0013D46A /* ShowEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1EC5B20ACC2CA0013D46A /* ShowEventViewController.swift */; };
+		A1C4165820AE0F5300C8C781 /* RunDrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C4165720AE0F5300C8C781 /* RunDrawingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +32,6 @@
 		0F2EB94020AB6A3D00E6F907 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0F2EB94320AB6A3D00E6F907 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0F2EB94620AB6A3D00E6F907 /* Sketchtacts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Sketchtacts.xcdatamodel; sourceTree = "<group>"; };
-		0F2EB94820AB6A3E00E6F907 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F2EB94B20AB6A3E00E6F907 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F2EB94D20AB6A3E00E6F907 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F2EB95320AB6F8300E6F907 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
@@ -38,8 +40,12 @@
 		0F2EB95820AB73DB00E6F907 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0F2EB95920AB73DB00E6F907 /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0F2EB95A20AB73DB00E6F907 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		0F2EB95F20AB78C100E6F907 /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
-		0F2EB96120AB7FA600E6F907 /* ViewEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEventViewController.swift; sourceTree = "<group>"; };
+		A109914120AF3140007A0FF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1138E0720ADFBEE00A33481 /* EnterPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPinViewController.swift; sourceTree = "<group>"; };
+		A1B1EC5720ACA2610013D46A /* NewPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPersonViewController.swift; sourceTree = "<group>"; };
+		A1B1EC5920ACA4E40013D46A /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
+		A1B1EC5B20ACC2CA0013D46A /* ShowEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventViewController.swift; sourceTree = "<group>"; };
+		A1C4165720AE0F5300C8C781 /* RunDrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunDrawingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,17 +82,20 @@
 		0F2EB93D20AB6A3D00E6F907 /* Sketchtacts */ = {
 			isa = PBXGroup;
 			children = (
+				A1C4165720AE0F5300C8C781 /* RunDrawingViewController.swift */,
+				A1B1EC5B20ACC2CA0013D46A /* ShowEventViewController.swift */,
 				0F2EB93E20AB6A3D00E6F907 /* AppDelegate.swift */,
 				0F2EB94020AB6A3D00E6F907 /* ViewController.swift */,
 				0F2EB94220AB6A3D00E6F907 /* Main.storyboard */,
-				0F2EB94820AB6A3E00E6F907 /* Assets.xcassets */,
+				A1138E0720ADFBEE00A33481 /* EnterPinViewController.swift */,
+				A1B1EC5920ACA4E40013D46A /* ConfirmViewController.swift */,
 				0F2EB94A20AB6A3E00E6F907 /* LaunchScreen.storyboard */,
+				A109914120AF3140007A0FF6 /* Assets.xcassets */,
 				0F2EB94D20AB6A3E00E6F907 /* Info.plist */,
 				0F2EB94520AB6A3D00E6F907 /* Sketchtacts.xcdatamodeld */,
 				0F2EB95320AB6F8300E6F907 /* EventsViewController.swift */,
 				0F2EB95520AB708E00E6F907 /* NewEventViewController.swift */,
-				0F2EB95F20AB78C100E6F907 /* ConfirmViewController.swift */,
-				0F2EB96120AB7FA600E6F907 /* ViewEventViewController.swift */,
+				A1B1EC5720ACA2610013D46A /* NewPersonViewController.swift */,
 			);
 			path = Sketchtacts;
 			sourceTree = "<group>";
@@ -150,7 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F2EB94C20AB6A3E00E6F907 /* LaunchScreen.storyboard in Resources */,
-				0F2EB94920AB6A3E00E6F907 /* Assets.xcassets in Resources */,
+				A109914220AF3140007A0FF6 /* Assets.xcassets in Resources */,
 				0F2EB94420AB6A3D00E6F907 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -163,16 +172,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F2EB95D20AB73DB00E6F907 /* Person+CoreDataClass.swift in Sources */,
+				A1B1EC5820ACA2610013D46A /* NewPersonViewController.swift in Sources */,
 				0F2EB94720AB6A3D00E6F907 /* Sketchtacts.xcdatamodeld in Sources */,
+				A1B1EC5A20ACA4E40013D46A /* ConfirmViewController.swift in Sources */,
 				0F2EB95E20AB73DB00E6F907 /* Person+CoreDataProperties.swift in Sources */,
 				0F2EB95420AB6F8300E6F907 /* EventsViewController.swift in Sources */,
+				A1B1EC5C20ACC2CA0013D46A /* ShowEventViewController.swift in Sources */,
 				0F2EB95620AB708E00E6F907 /* NewEventViewController.swift in Sources */,
-				0F2EB96220AB7FA600E6F907 /* ViewEventViewController.swift in Sources */,
-				0F2EB96020AB78C100E6F907 /* ConfirmViewController.swift in Sources */,
 				0F2EB95C20AB73DB00E6F907 /* Event+CoreDataProperties.swift in Sources */,
+				A1C4165820AE0F5300C8C781 /* RunDrawingViewController.swift in Sources */,
 				0F2EB94120AB6A3D00E6F907 /* ViewController.swift in Sources */,
 				0F2EB95B20AB73DB00E6F907 /* Event+CoreDataClass.swift in Sources */,
 				0F2EB93F20AB6A3D00E6F907 /* AppDelegate.swift in Sources */,
+				A1138E0820ADFBEE00A33481 /* EnterPinViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

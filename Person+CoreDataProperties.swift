@@ -2,7 +2,7 @@
 //  Person+CoreDataProperties.swift
 //  Sketchtacts
 //
-//  Created by Cody Frederick on 5/15/18.
+//  Created by Heather Davis on 5/18/18.
 //  Copyright © 2018 Cody Frederick. All rights reserved.
 //
 //
@@ -17,10 +17,11 @@ extension Person {
         return NSFetchRequest<Person>(entityName: "Person")
     }
 
+    @NSManaged public var company: String?
+    @NSManaged public var email: String?
     @NSManaged public var firstName: String?
     @NSManaged public var lastName: String?
-    @NSManaged public var email: String?
-    @NSManaged public var company: String?
+    @NSManaged public var winFlag: Bool
     @NSManaged public var event: Event?
 
 }

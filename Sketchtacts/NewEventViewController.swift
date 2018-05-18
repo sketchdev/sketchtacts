@@ -15,10 +15,18 @@ protocol NewEventViewControllerDelegate {
 
 class NewEventViewController: UITableViewController {
     
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var nameTextField: UITextField!
+    
     var _delegate: NewEventViewControllerDelegate!
     
+    @IBAction func onNameChange(_ sender: Any) {
+        let text = nameTextField.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
+    }
+    
     @IBAction func onSave(_ sender: Any) {
-        _delegate.onDone(self, wasCancelled: false, name: "Bob")
+        _delegate.onDone(self, wasCancelled: false, name: nameTextField.text)
         dismiss(animated: true, completion: nil)
     }
     
@@ -30,5 +38,4 @@ class NewEventViewController: UITableViewController {
     public func setup(delegate: NewEventViewControllerDelegate) {
         _delegate = delegate
     }
-    
 }
