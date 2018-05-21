@@ -16,6 +16,8 @@ protocol RunDrawingViewControllerDelegate {
 class RunDrawingViewController: UIViewController {
     @IBOutlet weak var winnerLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var companyLabel: UILabel!
+    @IBOutlet weak var rerunButton: UIBarButtonItem!
     
     var _delegate: RunDrawingViewControllerDelegate!
     var _event: Event!
@@ -45,21 +47,33 @@ class RunDrawingViewController: UIViewController {
     }
     
     @IBAction func onNext(_ sender: Any) {
-        people.remove(at: winnerIndex)
-        winnerLabel.alpha = 0
-        activityIndicator.alpha = 1
-        chooseWinner()
-        animateActivityIndicator()
+        if people.count > 0 {
+            people.remove(at: winnerIndex)
+            winnerLabel.alpha = 0
+            companyLabel.alpha = 0
+            activityIndicator.alpha = 1
+            chooseWinner()
+            animateActivityIndicator()
+            if people.count == 0 {
+                rerunButton.isEnabled = false
+            }
+        }
     }
     
     func chooseWinner() {
-        winnerIndex = Int(arc4random_uniform(UInt32(people.count)))
-        winner = people[winnerIndex]
+        if people.count > 0 {
+            winnerIndex = Int(arc4random_uniform(UInt32(people.count)))
+            winner = people[winnerIndex]
+        }
     }
     
     func updateWinnerLabel() {
-        winnerLabel.text = "\(winner.firstName ?? "") \(winner.lastName ?? "" )"
-        winnerLabel.alpha = 1
+        if winner != nil {
+            winnerLabel.text = "\(winner.firstName ?? "") \(winner.lastName ?? "" )"
+            winnerLabel.alpha = 1
+            companyLabel.text = "\(winner.company ?? "")"
+            companyLabel.alpha = 1
+        }
     }
     
     func animateActivityIndicator() {

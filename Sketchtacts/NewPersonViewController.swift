@@ -76,6 +76,6 @@ class NewPersonViewController: UITableViewController {
     }
     
     func updateButtonState() {
-        saveButton.isEnabled =  !(firstNameTextField.text?.isEmpty)! && !(lastNameTextField.text?.isEmpty)! && !(emailTextField.text?.isEmpty)!
+        saveButton.isEnabled =  !(firstNameTextField.text?.isEmpty)! && !(lastNameTextField.text?.isEmpty)! && !(emailTextField.text?.isEmpty)! && !(companyTextField.text?.isEmpty)!
     }
 }

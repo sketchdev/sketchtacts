@@ -42,17 +42,9 @@ class ShowEventViewController: UIViewController {
             print("\(error)")
         }
         
-        let vc = UIActivityViewController(activityItems: [path as Any], applicationActivities: [])
-        vc.excludedActivityTypes = [
-            UIActivityType.assignToContact,
-            UIActivityType.saveToCameraRoll,
-            UIActivityType.postToFlickr,
-            UIActivityType.postToVimeo,
-            UIActivityType.postToTencentWeibo,
-            UIActivityType.postToTwitter,
-            UIActivityType.postToFacebook
-        ]
-        present(vc, animated: true, completion: nil)
+        let activityViewController = UIActivityViewController(activityItems: [path as Any], applicationActivities: [])
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        present(activityViewController, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -92,8 +84,8 @@ class ShowEventViewController: UIViewController {
     }
     
     func updateWinnerLabel() {
-        if _event.hasWinner {
-            winnerLabel.text = "\(_winner.firstName ?? "") \(_winner.lastName ?? "")"
+        if _event.hasWinner && _winner != nil {
+            winnerLabel.text = "\(_winner.firstName ?? "") \(_winner.lastName ?? "") - \(_winner.company ?? "")"
         }
     }
 }
@@ -101,6 +93,9 @@ class ShowEventViewController: UIViewController {
 extension ShowEventViewController: RunDrawingViewControllerDelegate {
     func onDone(_ viewController: RunDrawingViewController, wasCancelled: Bool, winner: Person?) {
         if !wasCancelled {
+            if _event.hasWinner {
+                
+            }
             _event.hasWinner = true
             _winner = winner
             winner?.winFlag = true
@@ -132,8 +127,8 @@ extension ShowEventViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         var actions: [UIContextualAction] = []
         let delete = UIContextualAction(style: .destructive, title: "Delete") { [unowned self] (action, view, done) in
-            let event = self.fetchResultsController.object(at: indexPath)
-            self._context.delete(event)
+            let person = self.fetchResultsController.object(at: indexPath)
+            self._context.delete(person)
             try! self._context.save()
             done(true)
         }
