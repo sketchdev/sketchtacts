@@ -38,7 +38,7 @@ class RunDrawingViewController: UIViewController {
     public func setup(delegate: RunDrawingViewControllerDelegate, event: Event) {
         _delegate = delegate
         _event = event
-        people = _event.people?.allObjects as! [Person]
+        people = _event.people?.allObjects.filter { ($0 as! Person).winFlag == false } as! [Person]
     }
     
     override func viewDidLoad() {

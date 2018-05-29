@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0F2EB93F20AB6A3D00E6F907 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB93E20AB6A3D00E6F907 /* AppDelegate.swift */; };
-		0F2EB94120AB6A3D00E6F907 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB94020AB6A3D00E6F907 /* ViewController.swift */; };
 		0F2EB94420AB6A3D00E6F907 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F2EB94220AB6A3D00E6F907 /* Main.storyboard */; };
 		0F2EB94720AB6A3D00E6F907 /* Sketchtacts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB94520AB6A3D00E6F907 /* Sketchtacts.xcdatamodeld */; };
 		0F2EB94C20AB6A3E00E6F907 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F2EB94A20AB6A3E00E6F907 /* LaunchScreen.storyboard */; };
@@ -85,7 +84,6 @@
 				A1C4165720AE0F5300C8C781 /* RunDrawingViewController.swift */,
 				A1B1EC5B20ACC2CA0013D46A /* ShowEventViewController.swift */,
 				0F2EB93E20AB6A3D00E6F907 /* AppDelegate.swift */,
-				0F2EB94020AB6A3D00E6F907 /* ViewController.swift */,
 				0F2EB94220AB6A3D00E6F907 /* Main.storyboard */,
 				A1138E0720ADFBEE00A33481 /* EnterPinViewController.swift */,
 				A1B1EC5920ACA4E40013D46A /* ConfirmViewController.swift */,
@@ -181,7 +179,6 @@
 				0F2EB95620AB708E00E6F907 /* NewEventViewController.swift in Sources */,
 				0F2EB95C20AB73DB00E6F907 /* Event+CoreDataProperties.swift in Sources */,
 				A1C4165820AE0F5300C8C781 /* RunDrawingViewController.swift in Sources */,
-				0F2EB94120AB6A3D00E6F907 /* ViewController.swift in Sources */,
 				0F2EB95B20AB73DB00E6F907 /* Event+CoreDataClass.swift in Sources */,
 				0F2EB93F20AB6A3D00E6F907 /* AppDelegate.swift in Sources */,
 				A1138E0820ADFBEE00A33481 /* EnterPinViewController.swift in Sources */,
@@ -328,7 +325,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BRYU7S9CPY;
 				INFOPLIST_FILE = Sketchtacts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -336,6 +335,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = sketchdev.Sketchtacts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -345,7 +345,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BRYU7S9CPY;
 				INFOPLIST_FILE = Sketchtacts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -353,6 +355,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = sketchdev.Sketchtacts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
