@@ -10,12 +10,6 @@ import Foundation
 import UIKit
 import CoreData
 
-//
-//protocol NewContactViewControllerDelegate {
-//    func onDone(_ viewController: NewContactViewController, wasCancelled: Bool, firstName: String?,
-//                lastName: String?, email: String?, company: String?)
-//}
-
 extension NewPersonViewController: ConfirmViewControllerDelegate {
     func onDone(_ viewController: ConfirmViewController) {
         firstNameTextField.text = ""
@@ -34,9 +28,9 @@ extension NewPersonViewController: EnterPinViewControllerDelegate {
     }
 }
 
-class NewPersonViewController: UITableViewController {
+class NewPersonViewController: UIViewController {
     
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -57,7 +51,6 @@ class NewPersonViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "confirm" {
-
             let person = NSEntityDescription.insertNewObject(forEntityName: "Person", into: _context) as! Person
             person.firstName = firstNameTextField.text
             person.lastName = lastNameTextField.text

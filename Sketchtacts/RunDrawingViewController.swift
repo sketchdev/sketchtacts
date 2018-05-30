@@ -15,12 +15,12 @@ protocol RunDrawingViewControllerDelegate {
 
 class RunDrawingViewController: UIViewController {
     @IBOutlet weak var winnerLabel: UILabel!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var companyLabel: UILabel!
     @IBOutlet weak var rerunButton: UIBarButtonItem!
     
     var _delegate: RunDrawingViewControllerDelegate!
     var _event: Event!
+    var _timer: Timer!
     var people: [Person] = []
     var winner: Person!
     var winnerIndex: Int = 0
@@ -35,54 +35,66 @@ class RunDrawingViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func pickWinner(_ sender: UITapGestureRecognizer) {
+        if canRunDrawing() {
+            winnerIndex = Int(arc4random_uniform(UInt32(people.count)))
+            winner = people[winnerIndex]
+            winnerLabel.textColor = UIColor(named: "Primary")
+            winnerLabel.text = "\(winner.firstName ?? "") \(winner.lastName ?? "" )"
+            companyLabel.text = "\(winner.company ?? "")"
+            winnerLabel.isUserInteractionEnabled = false
+        }
+        _timer.invalidate()
+    }
+    
     public func setup(delegate: RunDrawingViewControllerDelegate, event: Event) {
         _delegate = delegate
         _event = event
         people = _event.people?.allObjects.filter { ($0 as! Person).winFlag == false } as! [Person]
+        _timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(RunDrawingViewController.randomLabel), userInfo: nil, repeats: true);
     }
     
     override func viewDidLoad() {
-        chooseWinner()
-        animateActivityIndicator()
+        _timer.fire()
     }
     
     @IBAction func onNext(_ sender: Any) {
-        if people.count > 0 {
+        if canRunDrawing() {
+            winnerLabel.isUserInteractionEnabled = true
+            companyLabel.text = ""
             people.remove(at: winnerIndex)
-            winnerLabel.alpha = 0
-            companyLabel.alpha = 0
-            activityIndicator.alpha = 1
-            chooseWinner()
-            animateActivityIndicator()
             if people.count == 0 {
                 rerunButton.isEnabled = false
             }
+            _timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(RunDrawingViewController.randomLabel), userInfo: nil, repeats: true);
         }
     }
     
-    func chooseWinner() {
-        if people.count > 0 {
-            winnerIndex = Int(arc4random_uniform(UInt32(people.count)))
-            winner = people[winnerIndex]
+    @objc func randomLabel() {
+        if canRunDrawing() {
+            let personIndex = Int(arc4random_uniform(UInt32(self.people.count)))
+            let person = self.people[personIndex]
+            self.winnerLabel.text = "\(person.firstName ?? "") \(person.lastName ?? "" )"
+            self.winnerLabel.textColor = UIColor.random()
         }
     }
     
-    func updateWinnerLabel() {
-        if winner != nil {
-            winnerLabel.text = "\(winner.firstName ?? "") \(winner.lastName ?? "" )"
-            winnerLabel.alpha = 1
-            companyLabel.text = "\(winner.company ?? "")"
-            companyLabel.alpha = 1
-        }
+    func canRunDrawing() -> Bool {
+        return people.count > 0
     }
-    
-    func animateActivityIndicator() {
-        activityIndicator.startAnimating()
-        UIView.animate(withDuration: 2, animations: {
-            self.activityIndicator.alpha = 0.0
-        }) { complete in
-            self.activityIndicator.stopAnimating()
-            self.updateWinnerLabel()
-        }
+}
+
+extension CGFloat {
+    static func random() -> CGFloat {
+        return CGFloat(arc4random()) / CGFloat(UInt32.max)
+    }
+}
+
+extension UIColor {
+    static func random() -> UIColor {
+        return UIColor(red:   .random(),
+                       green: .random(),
+                       blue:  .random(),
+                       alpha: 1.0)
     }
 }

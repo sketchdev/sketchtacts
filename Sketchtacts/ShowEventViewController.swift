@@ -13,7 +13,7 @@ import CoreData
 class ShowEventViewController: UIViewController {
     
     @IBOutlet weak var contactsTableView: UITableView!
-    @IBOutlet weak var countItem: UIBarButtonItem!
+    @IBOutlet weak var runDrawing: UIBarButtonItem!
     
     var _event: Event!
     var _context: NSManagedObjectContext!
@@ -34,7 +34,6 @@ class ShowEventViewController: UIViewController {
             csvText.append(newLine)
         }
         
-        print(path as Any)
         do {
             try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
         } catch {
@@ -75,7 +74,6 @@ class ShowEventViewController: UIViewController {
 extension ShowEventViewController: RunDrawingViewControllerDelegate {
     func onDone(_ viewController: RunDrawingViewController, wasCancelled: Bool, winner: Person?) {
         if !wasCancelled {
-            _event.hasWinner = true
             winner?.winFlag = true
             try! _context.save()
         }
@@ -94,7 +92,7 @@ extension ShowEventViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if _event.hasWinner && section == 0 {
+        if fetchResultsController.sections![section].name == WinFlag.yes.rawValue {
             return "Winners"
         } else {
             return "Entries"
@@ -103,11 +101,7 @@ extension ShowEventViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         let count = fetchResultsController.sections![section].numberOfObjects
-        if _event.hasWinner && section == 0 {
-            return "\(count) Winners"
-        } else {
-            return "\(count) Entries"
-        }
+        return "\(count)"
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -125,11 +119,8 @@ extension ShowEventViewController: UITableViewDelegate, UITableViewDataSource {
         var actions: [UIContextualAction] = []
         let delete = UIContextualAction(style: .destructive, title: "Delete") { [unowned self] (action, view, done) in
             let person = self.fetchResultsController.object(at: indexPath)
-            if self._event.hasWinner && indexPath.section == 0 {
+            if self.fetchResultsController.sections![indexPath.section].name == WinFlag.yes.rawValue {
                 person.winFlag = false
-                if self.fetchResultsController.sections?[0].numberOfObjects == 1 {
-                    self._event.hasWinner = false
-                }
             } else {
                 self._context.delete(person)
             }
@@ -140,4 +131,9 @@ extension ShowEventViewController: UITableViewDelegate, UITableViewDataSource {
         actions.append(delete)
         return UISwipeActionsConfiguration(actions: actions)
     }
+}
+
+enum WinFlag: String {
+    case yes = "1"
+    case no = "0"
 }
