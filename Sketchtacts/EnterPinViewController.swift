@@ -25,6 +25,10 @@ class EnterPinViewController: UITableViewController {
     }
     
     @IBAction func onSubmit(_ sender: Any) {
+        doSubmit()
+    }
+    
+    func doSubmit() {
         if pinTextField.text == "1309" {
             dismiss(animated: true, completion: nil)
             _delegate.onDone(self, wasCancelled: false)
@@ -39,5 +43,14 @@ class EnterPinViewController: UITableViewController {
     
     public func setup(delegate: EnterPinViewControllerDelegate) {
         _delegate = delegate
+    }
+}
+
+extension EnterPinViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        doSubmit()
+        return true
     }
 }
