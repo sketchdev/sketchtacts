@@ -27,23 +27,28 @@ class ShowEventViewController: UIViewController {
     
     @IBAction func onExport(_ sender: Any) {
         let fileName = "\(_event.name?.replacingOccurrences(of: " ", with: "") ?? "")_contacts.csv"
-        let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
-        var csvText = "First Name,Last Name,Email,Company,Winner\n"
+        print(documentsDirectory)
+        let path = documentsDirectory.appendingPathComponent(fileName)
+        var csvText = "First Name,Last Name,Email,Company,Training,Coaching,Development,Winner\n"
         for person in _event.people?.allObjects as! [Person] {
-            let newLine = "\(person.firstName ?? ""),\(person.lastName ?? ""),\(person.email ?? ""),\(person.company ?? ""),\(person.winFlag ? "WINNER" : "")\n"
+            let newLine = "\(person.firstName ?? ""),\(person.lastName ?? ""),\(person.email ?? ""),\(person.company ?? ""),\(person.training ? "YES" : "NO"),\(person.coaching ? "YES" : "NO"),\(person.development ? "YES" : "NO"),\(person.winFlag ? "WINNER" : "")\n"
             csvText.append(newLine)
         }
         
         do {
-            try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
+            try csvText.write(to: path, atomically: true, encoding: String.Encoding.utf8)
         } catch {
             print("Failed to create file")
             print("\(error)")
         }
         
-        let activityViewController = UIActivityViewController(activityItems: [path as Any], applicationActivities: [])
-        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
-        present(activityViewController, animated: true, completion: nil)
+//        let activityViewController = UIActivityViewController(activityItems: [path as Any], applicationActivities: [])
+//        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+//        present(activityViewController, animated: true, completion: nil)
+    }
+    
+    var documentsDirectory: URL {
+        return FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).last!
     }
     
     override func viewDidLoad() {
@@ -111,14 +116,24 @@ extension ShowEventViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "person", for: indexPath)
         let person = fetchResultsController.object(at: indexPath)
-        cell.textLabel?.text = "\(person.firstName ?? "") \(person.lastName ?? "")"
+        cell.textLabel?.text = "\(person.firstName ?? "") \(person.lastName ?? "") - \(person.company ?? "") - \(person.email ?? "")"
+        cell.textLabel?.textColor = person.eligibleFlag ? UIColor.black : UIColor.lightGray;
         return cell
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         var actions: [UIContextualAction] = []
+        let person = self.fetchResultsController.object(at: indexPath)
+        if self.fetchResultsController.sections![indexPath.section].name == WinFlag.no.rawValue {
+            let title = person.eligibleFlag ? "Ineligible" : "Eligible"
+            let ignore = UIContextualAction(style: .normal, title: title) { [unowned self] (action, view, done) in
+                person.eligibleFlag = !person.eligibleFlag
+                //TODO:  UPDATE TRY WITH TRY CATCH
+                try! self._context.save()
+            }
+            actions.append(ignore)
+        }
         let delete = UIContextualAction(style: .destructive, title: "Delete") { [unowned self] (action, view, done) in
-            let person = self.fetchResultsController.object(at: indexPath)
             if self.fetchResultsController.sections![indexPath.section].name == WinFlag.yes.rawValue {
                 person.winFlag = false
             } else {
@@ -128,9 +143,13 @@ extension ShowEventViewController: UITableViewDelegate, UITableViewDataSource {
             try! self._context.save()
             done(true)
         }
+        
         actions.append(delete)
         return UISwipeActionsConfiguration(actions: actions)
     }
+}
+enum MyError: Error {
+    case runtimeError(String)
 }
 
 enum WinFlag: String {

@@ -22,6 +22,7 @@ class RunDrawingViewController: UIViewController {
     var _event: Event!
     var _timer: Timer!
     var people: [Person] = []
+    var displayPeople: [Person] = []
     var winner: Person!
     var winnerIndex: Int = 0
     
@@ -50,7 +51,8 @@ class RunDrawingViewController: UIViewController {
     public func setup(delegate: RunDrawingViewControllerDelegate, event: Event) {
         _delegate = delegate
         _event = event
-        people = _event.people?.allObjects.filter { ($0 as! Person).winFlag == false } as! [Person]
+        displayPeople = _event.people?.allObjects.filter { ($0 as! Person).winFlag == false } as! [Person]
+        people = _event.people?.allObjects.filter { ($0 as! Person).winFlag == false && ($0 as! Person).eligibleFlag == true } as! [Person]
         _timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(RunDrawingViewController.randomLabel), userInfo: nil, repeats: true);
     }
     
@@ -72,8 +74,8 @@ class RunDrawingViewController: UIViewController {
     
     @objc func randomLabel() {
         if canRunDrawing() {
-            let personIndex = Int(arc4random_uniform(UInt32(self.people.count)))
-            let person = self.people[personIndex]
+            let personIndex = Int(arc4random_uniform(UInt32(self.displayPeople.count)))
+            let person = self.displayPeople[personIndex]
             self.winnerLabel.text = "\(person.firstName ?? "") \(person.lastName ?? "" )"
             self.winnerLabel.textColor = UIColor.random()
         }

@@ -48,11 +48,12 @@ extension EventsViewController: NSFetchedResultsControllerDelegate {
 }
 
 extension EventsViewController: NewEventViewControllerDelegate {
-    func onDone(_ viewController: NewEventViewController, wasCancelled: Bool, name: String?) {
+    func onDone(_ viewController: NewEventViewController, wasCancelled: Bool, name: String?, image: Data?) {
         if !wasCancelled {
             let context = appDelegate.persistentContainer.viewContext
             let event = NSEntityDescription.insertNewObject(forEntityName: "Event", into: context) as! Event
             event.name = name
+            event.image = image
             appDelegate.saveContext()
         }
     }

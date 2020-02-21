@@ -13,7 +13,7 @@ protocol EnterPinViewControllerDelegate {
     func onDone(_ viewController: EnterPinViewController, wasCancelled: Bool)
 }
 
-class EnterPinViewController: UITableViewController {
+class EnterPinViewController: UIViewController {
     
     @IBOutlet weak var pinTextField: UITextField!
     
@@ -29,7 +29,7 @@ class EnterPinViewController: UITableViewController {
     }
     
     func doSubmit() {
-        if pinTextField.text == "1309" {
+        if pinTextField.text == "1309" || pinTextField.text == "5309" {
             dismiss(animated: true, completion: nil)
             _delegate.onDone(self, wasCancelled: false)
         } else {

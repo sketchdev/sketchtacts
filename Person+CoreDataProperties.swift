@@ -22,6 +22,10 @@ extension Person {
     @NSManaged public var firstName: String?
     @NSManaged public var lastName: String?
     @NSManaged public var winFlag: Bool
+    @NSManaged public var eligibleFlag: Bool
     @NSManaged public var event: Event?
+    @NSManaged public var training: Bool
+    @NSManaged public var coaching: Bool
+    @NSManaged public var development: Bool
 
 }

@@ -11,7 +11,12 @@ import UIKit
 import CoreData
 
 extension NewPersonViewController: ConfirmViewControllerDelegate {
-    func onDone(_ viewController: ConfirmViewController) {
+    func onDone(_ viewController: ConfirmViewController, training: Bool, coaching: Bool, development: Bool) {
+        _person.coaching = coaching
+        _person.training = training
+        _person.development = development
+        try! _context.save()
+        
         firstNameTextField.text = ""
         lastNameTextField.text = ""
         emailTextField.text = ""
@@ -28,8 +33,7 @@ extension NewPersonViewController: EnterPinViewControllerDelegate {
     }
 }
 
-class NewPersonViewController: UIViewController {
-    
+class NewPersonViewController: UIViewController {    
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -37,9 +41,11 @@ class NewPersonViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var companyTextField: UITextField!
     @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet var imageView: UIImageView!
     
     var _context: NSManagedObjectContext!
     var _event: Event!
+    var _person: Person!
 
     @IBAction func onChange(_ sender: UIButton) {
         updateButtonState()
@@ -52,17 +58,20 @@ class NewPersonViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         firstNameTextField.becomeFirstResponder()
+        if _event.image != nil {
+            imageView.image = UIImage(data: _event.image!)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "confirm" {
-            let person = NSEntityDescription.insertNewObject(forEntityName: "Person", into: _context) as! Person
-            person.firstName = firstNameTextField.text
-            person.lastName = lastNameTextField.text
-            person.email = emailTextField.text
-            person.company = companyTextField.text
-            person.event = _event
-            
+            _person = NSEntityDescription.insertNewObject(forEntityName: "Person", into: _context) as? Person
+            _person.firstName = firstNameTextField.text
+            _person.lastName = lastNameTextField.text
+            _person.email = emailTextField.text
+            _person.company = companyTextField.text
+            _person.event = _event
+            _person.eligibleFlag = true
             try! _context.save()
             let ctrl = segue.destination as! ConfirmViewController
             ctrl.setup(delegate: self)

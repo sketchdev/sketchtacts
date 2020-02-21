@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E202" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Event" representedClassName="Event" syncable="YES">
-        <attribute name="hasWinner" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="people" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="event" inverseEntity="Person" syncable="YES"/>
+        <attribute name="hasWinner" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="people" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="event" inverseEntity="Person"/>
     </entity>
     <entity name="Person" representedClassName="Person" syncable="YES">
-        <attribute name="company" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="winFlag" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="people" inverseEntity="Event" syncable="YES"/>
+        <attribute name="coaching" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="company" optional="YES" attributeType="String"/>
+        <attribute name="development" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="eligibleFlag" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="firstName" optional="YES" attributeType="String"/>
+        <attribute name="lastName" optional="YES" attributeType="String"/>
+        <attribute name="training" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="winFlag" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="people" inverseEntity="Event"/>
     </entity>
     <elements>
-        <element name="Event" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="Person" positionX="-54" positionY="0" width="128" height="135"/>
+        <element name="Event" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="Person" positionX="-54" positionY="0" width="128" height="193"/>
     </elements>
 </model>
