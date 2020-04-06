@@ -27,8 +27,7 @@ class ShowEventViewController: UIViewController {
     
     @IBAction func onExport(_ sender: Any) {
         let fileName = "\(_event.name?.replacingOccurrences(of: " ", with: "") ?? "")_contacts.csv"
-        print(documentsDirectory)
-        let path = documentsDirectory.appendingPathComponent(fileName)
+        let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
         var csvText = "First Name,Last Name,Email,Company,Training,Coaching,Development,Winner\n"
         for person in _event.people?.allObjects as! [Person] {
             let newLine = "\(person.firstName ?? ""),\(person.lastName ?? ""),\(person.email ?? ""),\(person.company ?? ""),\(person.training ? "YES" : "NO"),\(person.coaching ? "YES" : "NO"),\(person.development ? "YES" : "NO"),\(person.winFlag ? "WINNER" : "")\n"
@@ -36,15 +35,21 @@ class ShowEventViewController: UIViewController {
         }
         
         do {
-            try csvText.write(to: path, atomically: true, encoding: String.Encoding.utf8)
+            try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
         } catch {
             print("Failed to create file")
             print("\(error)")
         }
-        
-//        let activityViewController = UIActivityViewController(activityItems: [path as Any], applicationActivities: [])
-//        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
-//        present(activityViewController, animated: true, completion: nil)
+        let activityViewController = UIActivityViewController(activityItems: [path as Any], applicationActivities: nil)
+        activityViewController.excludedActivityTypes = [.airDrop]
+
+        if let popoverController = activityViewController.popoverPresentationController {
+            popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
+            popoverController.sourceView = self.view
+            popoverController.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+        }
+
+        self.present(activityViewController, animated: true, completion: nil)
     }
     
     var documentsDirectory: URL {
