@@ -630,14 +630,14 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ts7-gW-Ily">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ts7-gW-Ily">
                                         <rect key="frame" x="0.0" y="228" width="1326" height="350"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Mus-Zr-Dwn">
-                                                <rect key="frame" x="0.0" y="0.0" width="660.5" height="299"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Mus-Zr-Dwn">
+                                                <rect key="frame" x="0.0" y="0.0" width="660.5" height="350"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="25" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="M5L-QD-sty">
-                                                        <rect key="frame" x="0.0" y="0.0" width="660.5" height="51.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="660.5" height="62"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                                         <variation key="heightClass=regular-widthClass=regular">
@@ -649,7 +649,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="25" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="3m3-zp-g7f">
-                                                        <rect key="frame" x="0.0" y="61.5" width="660.5" height="51.5"/>
+                                                        <rect key="frame" x="0.0" y="72" width="660.5" height="62"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                                         <variation key="heightClass=regular-widthClass=regular">
@@ -661,7 +661,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="25" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2fE-nF-lzz">
-                                                        <rect key="frame" x="0.0" y="123" width="660.5" height="51.5"/>
+                                                        <rect key="frame" x="0.0" y="144" width="660.5" height="62"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                                         <variation key="heightClass=regular-widthClass=regular">
@@ -673,7 +673,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company" textAlignment="natural" minimumFontSize="25" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Nq8-oT-g7F">
-                                                        <rect key="frame" x="0.0" y="184.5" width="660.5" height="51.5"/>
+                                                        <rect key="frame" x="0.0" y="216" width="660.5" height="62"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                                         <variation key="heightClass=regular-widthClass=regular">
@@ -685,7 +685,7 @@
                                                         </connections>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N87-sw-2Ml">
-                                                        <rect key="frame" x="0.0" y="246" width="660.5" height="53"/>
+                                                        <rect key="frame" x="0.0" y="288" width="660.5" height="62"/>
                                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                         <state key="normal" title="Submit"/>
@@ -752,12 +752,6 @@
         <!--Run Drawing!-->
         <scene sceneID="YUN-Ci-WHV">
             <objects>
-                <tapGestureRecognizer id="XTr-mN-M3C">
-                    <connections>
-                        <action selector="pickWinner:" destination="WQr-vt-T8N" id="fc7-ao-fFe"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mCT-zd-uH1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="WQr-vt-T8N" customClass="RunDrawingViewController" customModule="SketchtactsTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9mJ-Yt-1Rz">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
@@ -851,6 +845,12 @@
                         <outlet property="winnerLabel" destination="uGc-cN-KgV" id="H7d-WV-0BH"/>
                     </connections>
                 </viewController>
+                <tapGestureRecognizer id="XTr-mN-M3C">
+                    <connections>
+                        <action selector="pickWinner:" destination="WQr-vt-T8N" id="fc7-ao-fFe"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mCT-zd-uH1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1899.7071742313321" y="1654.6875"/>
         </scene>
