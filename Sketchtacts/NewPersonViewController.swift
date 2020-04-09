@@ -41,6 +41,7 @@ class NewPersonViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var companyTextField: UITextField!
     @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet var headerLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
     
     var _context: NSManagedObjectContext!
@@ -57,6 +58,7 @@ class NewPersonViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        headerLabel.text = _event.newUserFormHeader ?? "Enter to Win!"
         firstNameTextField.becomeFirstResponder()
         if _event.image != nil {
             imageView.image = UIImage(data: _event.image!)
@@ -74,7 +76,7 @@ class NewPersonViewController: UIViewController {
             _person.eligibleFlag = true
             try! _context.save()
             let ctrl = segue.destination as! ConfirmViewController
-            ctrl.setup(delegate: self)
+            ctrl.setup(delegate: self, header: _event.confirmUserHeader, description: _event.confirmUserDescription)
         } else if segue.identifier == "cancel" {
             let navCtrl = segue.destination as! UINavigationController
             let ctrl = navCtrl.viewControllers.first as! EnterPinViewController

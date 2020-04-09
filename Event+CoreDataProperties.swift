@@ -21,6 +21,9 @@ extension Event {
     @NSManaged public var hasWinner: Bool
     @NSManaged public var people: NSSet?
     @NSManaged public var image: Data?
+    @NSManaged public var newUserFormHeader: String?
+    @NSManaged public var confirmUserHeader: String?
+    @NSManaged public var confirmUserDescription: String?
 
 }
 

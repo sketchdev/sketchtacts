@@ -26,30 +26,43 @@ class ShowEventViewController: UIViewController {
     }
     
     @IBAction func onExport(_ sender: Any) {
-        let fileName = "\(_event.name?.replacingOccurrences(of: " ", with: "") ?? "")_contacts.csv"
+        let now = Date()
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
+        formatter.dateFormat = "yyyyMMddHHmmss"
+        let dateString = formatter.string(from: now)
+        let fileName = "\(_event.name?.replacingOccurrences(of: " ", with: "") ?? "")_\(dateString)_contacts.csv"
         let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
-        var csvText = "First Name,Last Name,Email,Company,Training,Coaching,Development,Winner\n"
+        var csvText = "Source,Event,First Name,Last Name,Email,Company,Training,Coaching,Development,Winner\n"
         for person in _event.people?.allObjects as! [Person] {
-            let newLine = "\(person.firstName ?? ""),\(person.lastName ?? ""),\(person.email ?? ""),\(person.company ?? ""),\(person.training ? "YES" : "NO"),\(person.coaching ? "YES" : "NO"),\(person.development ? "YES" : "NO"),\(person.winFlag ? "WINNER" : "")\n"
+            let event = _event.name ?? ""
+            let firstName = person.firstName ?? ""
+            let lastName = person.lastName ?? ""
+            let email = person.email ?? ""
+            let company = person.company ?? ""
+            let training = person.training
+            let coaching = person.coaching
+            let development = person.development
+            let winner = person.winFlag
+            let newLine = "Sketchtacts,\(event),\(firstName),\(lastName),\(email),\(company),\(training),\(coaching),\(development),\(winner)\n"
             csvText.append(newLine)
         }
         
         do {
             try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
+            let activityViewController = UIActivityViewController(activityItems: [path as Any], applicationActivities: nil)
+            activityViewController.excludedActivityTypes = [.airDrop]
+            if let popoverController = activityViewController.popoverPresentationController {
+                popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
+                popoverController.sourceView = self.view
+                popoverController.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+            }
+
+            self.present(activityViewController, animated: true, completion: nil)
         } catch {
             print("Failed to create file")
             print("\(error)")
         }
-        let activityViewController = UIActivityViewController(activityItems: [path as Any], applicationActivities: nil)
-        activityViewController.excludedActivityTypes = [.airDrop]
-
-        if let popoverController = activityViewController.popoverPresentationController {
-            popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
-            popoverController.sourceView = self.view
-            popoverController.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
-        }
-
-        self.present(activityViewController, animated: true, completion: nil)
     }
     
     var documentsDirectory: URL {

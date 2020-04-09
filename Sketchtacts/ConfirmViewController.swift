@@ -22,11 +22,17 @@ class ConfirmViewController: UIViewController {
     @IBOutlet var trainingStack: UIStackView!
     @IBOutlet var coachingStack: UIStackView!
     @IBOutlet var developmentStack: UIStackView!
+    @IBOutlet var headerLabel: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
     var _training = false
     var _coaching = false
     var _development = false
+    var _header: String?
+    var _description: String?
     
     override func viewDidLoad() {
+        headerLabel.text = _header ?? "You're In!"
+        descriptionLabel.text = _description ?? "I'm sure you'll win, but you'll have to wait until later to find out."
         trainingSwitch.layer.cornerRadius = 16
         coachingSwitch.layer.cornerRadius = 16
         developmentSwitch.layer.cornerRadius = 16
@@ -55,7 +61,9 @@ class ConfirmViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    public func setup(delegate: ConfirmViewControllerDelegate) {
+    public func setup(delegate: ConfirmViewControllerDelegate, header: String?, description: String?) {
         _delegate = delegate
+        _header = header
+        _description = description
     }
 }

@@ -29,7 +29,11 @@ class EventsViewController: UIViewController {
         if segue.identifier == "new" {
             let navCtrl = segue.destination as! UINavigationController
             let ctrl = navCtrl.viewControllers.first as! NewEventViewController
-            ctrl.setup(delegate: self)
+            if let event = sender as? Event {
+                ctrl.setup(delegate: self, event: event)
+            } else {
+                ctrl.setup(delegate: self, event: nil)
+            }
         } else if segue.identifier == "view" {
             let tableViewCell = sender as! UITableViewCell
             let indexPath = tableView.indexPath(for: tableViewCell)
@@ -48,19 +52,38 @@ extension EventsViewController: NSFetchedResultsControllerDelegate {
 }
 
 extension EventsViewController: NewEventViewControllerDelegate {
-    func onDone(_ viewController: NewEventViewController, wasCancelled: Bool, name: String?, image: Data?) {
+    func onDone(_ viewController: NewEventViewController, wasCancelled: Bool, isNew: Bool, name: String?, image: Data?, newUserHeader: String?, userConfirmHeader: String?, userConfirmDescription: String?) {
         if !wasCancelled {
             let context = appDelegate.persistentContainer.viewContext
-            let event = NSEntityDescription.insertNewObject(forEntityName: "Event", into: context) as! Event
-            event.name = name
-            event.image = image
-            appDelegate.saveContext()
+            if isNew {
+                let event = NSEntityDescription.insertNewObject(forEntityName: "Event", into: context) as! Event
+                event.name = name
+                event.image = image
+                event.newUserFormHeader = newUserHeader
+                event.confirmUserHeader = userConfirmHeader
+                event.confirmUserDescription = userConfirmDescription
+                appDelegate.saveContext()
+            } else {
+                let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
+                let namePredicate = NSPredicate(format: "name == %@", name!)
+                fetchRequest.predicate = namePredicate
+                do {
+                    let records = try context.fetch(fetchRequest)
+                    let objectUpdate = records.first! as Event
+                    objectUpdate.image = image
+                    objectUpdate.newUserFormHeader = newUserHeader
+                    objectUpdate.confirmUserHeader = userConfirmHeader
+                    objectUpdate.confirmUserDescription = userConfirmDescription
+                    try context.save()
+               } catch {
+                print("Unable to save \(name ?? "").")
+               }
+            }
         }
     }
 }
 
 extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchResultsController.sections![section].numberOfObjects
     }
@@ -81,13 +104,13 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
             done(true)
         }
         actions.append(delete)
+        let edit = UIContextualAction(style: .normal, title: "Edit") { [unowned self] (action, view, done) in
+            let event = self.fetchResultsController.object(at: indexPath)
+            done(true)
+            self.performSegue(withIdentifier: "new", sender: event)
+        }
+        actions.append(edit)
         return UISwipeActionsConfiguration(actions: actions)
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let ctrl = storyboard?.instantiateViewController(withIdentifier: "view") as! ViewEventViewController
-//        ctrl.title = events[indexPath.row]
-//        navigationController?.pushViewController(ctrl, animated: true)
-//    }
     
 }
