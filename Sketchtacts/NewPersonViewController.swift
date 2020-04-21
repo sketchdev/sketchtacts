@@ -47,6 +47,7 @@ class NewPersonViewController: UIViewController {
     var _context: NSManagedObjectContext!
     var _event: Event!
     var _person: Person!
+    var _header: String?
 
     @IBAction func onChange(_ sender: UIButton) {
         updateButtonState()
@@ -55,10 +56,11 @@ class NewPersonViewController: UIViewController {
     public func setup(context: NSManagedObjectContext, event: Event) {
         _context = context
         _event = event
+        _header = _event.newUserFormHeader
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        headerLabel.text = _event.newUserFormHeader ?? "Enter to Win!"
+        headerLabel.text = _header == "" ? "Enter to Win!" : _header
         firstNameTextField.becomeFirstResponder()
         if _event.image != nil {
             imageView.image = UIImage(data: _event.image!)

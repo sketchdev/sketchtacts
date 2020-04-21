@@ -19,6 +19,7 @@
 		0F2EB95E20AB73DB00E6F907 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EB95A20AB73DB00E6F907 /* Person+CoreDataProperties.swift */; };
 		A109914220AF3140007A0FF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A109914120AF3140007A0FF6 /* Assets.xcassets */; };
 		A1138E0820ADFBEE00A33481 /* EnterPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1138E0720ADFBEE00A33481 /* EnterPinViewController.swift */; };
+		A15C07832449ED190021E360 /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C07822449ED190021E360 /* DataHelper.swift */; };
 		A1B1EC5820ACA2610013D46A /* NewPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1EC5720ACA2610013D46A /* NewPersonViewController.swift */; };
 		A1B1EC5A20ACA4E40013D46A /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1EC5920ACA4E40013D46A /* ConfirmViewController.swift */; };
 		A1B1EC5C20ACC2CA0013D46A /* ShowEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1EC5B20ACC2CA0013D46A /* ShowEventViewController.swift */; };
@@ -40,6 +41,7 @@
 		0F2EB95A20AB73DB00E6F907 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A109914120AF3140007A0FF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1138E0720ADFBEE00A33481 /* EnterPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPinViewController.swift; sourceTree = "<group>"; };
+		A15C07822449ED190021E360 /* DataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		A1B1EC5720ACA2610013D46A /* NewPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPersonViewController.swift; sourceTree = "<group>"; };
 		A1B1EC5920ACA4E40013D46A /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		A1B1EC5B20ACC2CA0013D46A /* ShowEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 		0F2EB93220AB6A3C00E6F907 = {
 			isa = PBXGroup;
 			children = (
+				A15C07822449ED190021E360 /* DataHelper.swift */,
 				0F2EB95720AB73DB00E6F907 /* Event+CoreDataClass.swift */,
 				0F2EB95820AB73DB00E6F907 /* Event+CoreDataProperties.swift */,
 				0F2EB95920AB73DB00E6F907 /* Person+CoreDataClass.swift */,
@@ -171,6 +174,7 @@
 				0F2EB95D20AB73DB00E6F907 /* Person+CoreDataClass.swift in Sources */,
 				A1B1EC5820ACA2610013D46A /* NewPersonViewController.swift in Sources */,
 				0F2EB94720AB6A3D00E6F907 /* Sketchtacts.xcdatamodeld in Sources */,
+				A15C07832449ED190021E360 /* DataHelper.swift in Sources */,
 				A1B1EC5A20ACA4E40013D46A /* ConfirmViewController.swift in Sources */,
 				0F2EB95E20AB73DB00E6F907 /* Person+CoreDataProperties.swift in Sources */,
 				0F2EB95420AB6F8300E6F907 /* EventsViewController.swift in Sources */,
@@ -326,13 +330,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 29FCJ5K436;
+				DEVELOPMENT_TEAM = BRYU7S9CPY;
 				INFOPLIST_FILE = Sketchtacts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sketchdev.SketchtactsTest;
+				PRODUCT_BUNDLE_IDENTIFIER = sketchdev.Sketchtacts;
 				PRODUCT_NAME = SketchtactsTest;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -346,13 +350,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 29FCJ5K436;
+				DEVELOPMENT_TEAM = BRYU7S9CPY;
 				INFOPLIST_FILE = Sketchtacts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sketchdev.SketchtactsTest;
+				PRODUCT_BUNDLE_IDENTIFIER = sketchdev.Sketchtacts;
 				PRODUCT_NAME = SketchtactsTest;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;

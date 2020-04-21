@@ -31,8 +31,8 @@ class ConfirmViewController: UIViewController {
     var _description: String?
     
     override func viewDidLoad() {
-        headerLabel.text = _header ?? "You're In!"
-        descriptionLabel.text = _description ?? "I'm sure you'll win, but you'll have to wait until later to find out."
+        headerLabel.text = _header == "" ? "You're In!" : _header
+        descriptionLabel.text = _description == "" ? "I'm sure you'll win, but you'll have to wait until later to find out." : _description
         trainingSwitch.layer.cornerRadius = 16
         coachingSwitch.layer.cornerRadius = 16
         developmentSwitch.layer.cornerRadius = 16
